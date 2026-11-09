@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#100d20">
+  <title>LEGENDS — Icon Clash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell" aria-label="Legends: Icon Clash fighting game">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Legends home"><span class="brand-mark">L</span><span>LEGENDS <small>ICON CLASH</small></span></a>
+      <div class="top-note"><span class="live-dot"></span> THE SPOTLIGHT IS YOURS</div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound">♫ <span>ON</span></button>
+    </header>
+    <section class="stage-wrap">
+      <canvas id="game" width="960" height="540" aria-label="Game screen"></canvas>
+      <div class="mobile-controls" id="mobileControls" aria-label="Touch controls">
+        <div class="touch-group movement">
+          <button data-key="a" aria-label="Move left">◀</button><button data-key="d" aria-label="Move right">▶</button>
+          <button data-key="w" aria-label="Jump">↑</button><button data-key="s" aria-label="Block">▣</button>
+        </div>
+        <div class="touch-group attacks">
+          <button data-key="f" aria-label="Quick strike">QUICK</button><button data-key="g" aria-label="Power strike">POWER</button><button data-key="h" aria-label="Special move">SPECIAL</button>
+        </div>
+      </div>
+    </section>
+    <footer class="help-row">
+      <div><span class="keycap">A</span><span class="keycap">D</span> MOVE <span class="divider">/</span> <span class="keycap">W</span> JUMP <span class="divider">/</span> <span class="keycap">S</span> GUARD</div>
+      <div><span class="keycap">F</span> QUICK <span class="divider">/</span> <span class="keycap">G</span> POWER <span class="divider">/</span> <span class="keycap">H</span> SIGNATURE</div>
+      <div class="footer-right">A SHOWDOWN OF <strong>LEGENDS</strong></div>
+    </footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
