@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#07131c" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%2354f4e5' stroke-width='5'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%2354f4e5'/%3E%3C/svg%3E" />
+  <title>ORBITAL — Arena Rush</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Orbital home"><span class="brand-mark">◉</span><span>ORBITAL<span class="brand-sub">ARENA RUSH</span></span></a>
+      <div class="match-label"><span class="live-dot"></span> LIVE MATCH <span class="label-divider">/</span> NEON CIRCUIT</div>
+      <div class="top-actions"><span class="season-tag">SEASON <b>04</b></span><button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♫</button><button class="icon-btn" id="helpBtn" aria-label="How to play">?</button></div>
+    </header>
+
+    <section class="matchbar" aria-label="Match scoreboard">
+      <div class="team-score team-blue"><div class="team-icon">✦</div><div class="team-info"><span class="team-name">YOUR SQUAD</span><span class="team-caption">CYAN CREW</span></div><div class="score" id="blueScore">0</div></div>
+      <div class="match-center"><div class="period">ROUND 01 <span>•</span> FIRST TO 5</div><div class="clock" id="clock">02:00</div><div class="status-pill" id="matchStatus">KICK OFF</div></div>
+      <div class="team-score team-orange"><div class="score" id="orangeScore">0</div><div class="team-info"><span class="team-name">RIVAL SQUAD</span><span class="team-caption">EMBER CLUB</span></div><div class="team-icon">✹</div></div>
+    </section>
+
+    <section class="arena-wrap">
+      <canvas id="game" aria-label="Top-down car soccer arena"></canvas>
+      <div class="arena-topline"><span><i class="tiny-dot cyan"></i> YOU <span class="muted">·</span> <kbd>WASD</kbd> DRIVE <span class="muted">·</span> <kbd>SPACE</kbd> BOOST</span><span class="arena-location">◈ &nbsp; ORBITAL STADIUM <span class="muted">/</span> 04</span></div>
+      <div class="goal-label goal-left">CYAN<br><b>GOAL</b></div><div class="goal-label goal-right">EMBER<br><b>GOAL</b></div>
+      <div class="center-notice" id="centerNotice"><div class="notice-kicker">READY, ROCKET?</div><h1>OWN THE<br><em>ARENA.</em></h1><p>Collect. Grow. Score.</p><button class="primary-btn" id="playBtn">PLAY MATCH <span>↗</span></button><div class="notice-foot">PRESS <kbd>ENTER</kbd> TO START</div></div>
+      <div class="goal-flash" id="goalFlash"><span>GOAL!</span><small>WHAT A SHOT</small></div>
+      <div class="boost-toast" id="boostToast">BOOST CHARGED <b>+25</b></div>
+      <div class="minimap"><span>FIELD RADAR</span><canvas id="radar" width="118" height="70"></canvas></div>
+      <div class="arena-bottomline"><span><i class="tiny-dot orange"></i> <b>ORBS</b> = GROW YOUR CAR</span><span>FIRST TO 5 WINS <b>·</b> <span id="scoreMultiplier">1.0×</span> MASS</span></div>
+      <div class="mobile-controls" id="mobileControls"><div class="stick-zone" id="stickZone"><div class="stick" id="stick"></div><span>STEER</span></div><button class="boost-touch" id="boostTouch"><span>⚡</span><small>BOOST</small></button></div>
+    </section>
+
+    <footer class="dashboard">
+      <div class="stat-card mass-card"><div class="stat-heading"><span>CAR MASS</span><span class="stat-icon">◉</span></div><div class="mass-value"><strong id="massValue">1.0</strong><small>×</small><span class="mass-rank" id="massRank">ROOKIE</span></div><div class="mass-track"><span id="massFill"></span></div><div class="mass-hint"><span id="orbsCollected">0 ORBS COLLECTED</span><span>MAX 3.0×</span></div></div>
+      <div class="stat-card boost-card"><div class="stat-heading"><span>TURBO CHARGE</span><span class="stat-icon turbo-icon">ϟ</span></div><div class="boost-line"><div class="boost-bar"><span id="boostFill"></span></div><strong id="boostPercent">100<span>%</span></strong></div><div class="boost-hint"><kbd>SPACE</kbd> OR <kbd>SHIFT</kbd> TO ENGAGE <span class="boost-ready" id="boostReady">READY</span></div></div>
+      <div class="stat-card controls-card"><div class="stat-heading"><span>QUICK CONTROLS</span><span class="stat-icon">⌘</span></div><div class="control-list"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><small>DRIVE</small></span><span><kbd>SPACE</kbd><small>BOOST</small></span><span><kbd>P</kbd><small>PAUSE</small></span></div></div>
+      <button class="reset-btn" id="resetBtn" title="Restart match">↻</button>
+    </footer>
+    <div class="toast" id="toast" aria-live="polite"></div>
+  </main>
+  <div class="modal-backdrop" id="helpModal"><section class="help-panel"><button class="close-modal" id="closeHelp">×</button><span class="eyebrow">THE QUICK PLAYBOOK</span><h2>Drive. Collect.<br><em>Dominate.</em></h2><p>You're the cyan rocket car. Smash the ball into the rival's orange goal to score. Gather glowing orbs to grow bigger and hit harder.</p><div class="help-grid"><div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>Drive & steer</span></div><div><kbd>SPACE</kbd><span>Rocket boost</span></div><div><kbd>P</kbd><span>Pause match</span></div><div><span class="orb-sample"></span><span>Collect orbs for mass</span></div></div><button class="primary-btn" id="gotItBtn">GOT IT <span>↗</span></button></section></div>
+  <script src="game.js"></script>
+</body>
+</html>
